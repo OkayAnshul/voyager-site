@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Voyager</title>
+<meta name="description" content="Voyager's privacy policy. The short version: your data stays on your phone. We never see it.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%233b82f6'/></svg>">
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><span class="dot"></span>VOYAGER</a>
+  <div class="links">
+    <a href="features.html">Features</a>
+    <a href="development.html">How it was built</a>
+    <a href="privacy.html">Privacy</a>
+    <a class="btn" href="index.html#get">Get Voyager</a>
+  </div>
+</div></nav>
+
+<section style="padding-top:56px"><div class="wrap"><div class="prose">
+  <h1 style="font-size:40px">Privacy Policy</h1>
+  <p class="updated">Last updated: 27 July 2026</p>
+  <p>Voyager is a private, on-device location-timeline app. This policy explains — plainly — what
+    Voyager does and does not do with your data. The short version:
+    <strong>your data stays on your phone. We never see it.</strong></p>
+
+  <h2>1. Who this is from</h2>
+  <p>Voyager is developed by Anshul (Cosmic Laboratory). This policy covers the Voyager Android app
+    distributed via Google Play.</p>
+
+  <h2>2. What Voyager collects — and where it goes</h2>
+  <p>Voyager records, <strong>only on your device</strong>:</p>
+  <ul>
+    <li><strong>Location</strong> — GPS/network fixes, used to build your timeline of places and trips.</li>
+    <li><strong>Activity &amp; motion</strong> — walking/driving/cycling inference and step counts.</li>
+    <li><strong>Photo metadata</strong> — for the optional Day Story feature, capture time and EXIF
+      location are read from photos you already have; photos are never copied or uploaded.</li>
+    <li><strong>Derived data</strong> — places, visits, trips, routes, mileage and insights computed
+      from the above.</li>
+  </ul>
+  <p><strong>All of this is stored only in an encrypted database on your device.</strong> It is
+    <strong>not</strong> sent to us, to any server, or to any third party. Voyager has no user
+    accounts, no cloud sync, no analytics SDKs, and no advertising.</p>
+
+  <h2>3. The only time Voyager uses the network</h2>
+  <p>To turn coordinates into readable place names, Voyager may send a <strong>coordinate</strong> to
+    public geocoding services — OpenStreetMap (Overpass/Nominatim), Photon, and the Android system
+    geocoder. These requests contain only a location to look up, never your identity or your timeline.
+    You can disable network geocoding entirely in Settings (and Privacy-first mode disables it for you).</p>
+  <p>Voyager makes <strong>no other network connections</strong>.</p>
+
+  <h2>4. What we receive</h2>
+  <p><strong>Nothing.</strong> We operate no servers and have no ability to access your data. The
+    developer cannot see your location, your places, or anything else in the app.</p>
+  <p>If you install via Google Play, Google may collect standard install/crash telemetry under
+    Google's own policies — this is outside Voyager's control and applies to every Play app.</p>
+
+  <h2>5. Your data, your control</h2>
+  <ul>
+    <li><strong>Export</strong> — export your full timeline at any time (Voyager JSON, GPX, GeoJSON,
+      CSV). This satisfies your right to data portability (e.g. GDPR Article 20).</li>
+    <li><strong>Delete</strong> — “Clear all data” performs an immediate, permanent erasure of the
+      database (your right to erasure, e.g. GDPR Article 17).</li>
+    <li><strong>Retention</strong> — you choose how long raw samples and derived data are kept;
+      Voyager auto-cleans on your schedule.</li>
+    <li><strong>Backups</strong> — Voyager's database is excluded from Android cloud auto-backup, so it
+      is never copied to Google Drive. Migrate devices with Voyager's own encrypted export instead.</li>
+  </ul>
+
+  <h2>6. Security</h2>
+  <p>The on-device database is encrypted with SQLCipher; the key is held in the Android Keystore.
+    Voyager protects against passive on-device threats. A device that is rooted and actively targeted
+    by malware is outside the threat model — as it is for any app.</p>
+
+  <h2>7. Children</h2>
+  <p>Voyager is not directed at children under 13 and does not knowingly collect data from them.</p>
+
+  <h2>8. Changes</h2>
+  <p>If this policy changes, the updated version will be published with the app and dated above.</p>
+
+  <h2>9. Contact</h2>
+  <p>Questions about privacy: contact the developer through the Voyager listing on Google Play.</p>
+
+  <hr style="border:none;border-top:1px solid var(--line);margin:28px 0">
+  <p class="muted"><em>Voyager collects sensitive data because a location timeline requires it — but it
+    keeps every byte on your device. “Told by you, kept by you” is the whole point.</em></p>
+</div></div></section>
+
+<footer><div class="wrap">
+  <div>© 2026 Anshul · Voyager by Cosmic Laboratory</div>
+  <div class="foot-links">
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="development.html">How it was built</a>
+  </div>
+</div></footer>
+
+</body>
+</html>

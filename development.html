@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Voyager was built — Development story</title>
+<meta name="description" content="The year-long development story of Voyager: 208 commits, an architectural U-turn from visit-first to a stream-first pipeline, and a wave-by-wave hardening process.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%233b82f6'/></svg>">
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><span class="dot"></span>VOYAGER</a>
+  <div class="links">
+    <a href="features.html">Features</a>
+    <a href="development.html">How it was built</a>
+    <a href="privacy.html">Privacy</a>
+    <a class="btn" href="index.html#get">Get Voyager</a>
+  </div>
+</div></nav>
+
+<header class="hero" style="padding-bottom:10px"><div class="wrap">
+  <span class="eyebrow">208 commits · Aug 2025 → Jul 2026 · one engineer</span>
+  <h1>How Voyager was built</h1>
+  <p class="lede">A one-person Android project built in the open over roughly a year — including one
+    deliberate architectural U-turn and a disciplined, wave-by-wave hardening process.</p>
+</div></header>
+
+<section style="padding-top:24px"><div class="wrap"><div class="prose">
+  <div class="timeline">
+    <div class="phase"><div class="when">Aug 2025 · Foundation</div>
+      <h3>Privacy-first from the first commit</h3>
+      <p>Clean-architecture skeleton, Hilt, a Room schema <strong>encrypted with SQLCipher from day
+        one</strong>, adaptive location sampling, a foreground service, early multi-sensor capture,
+        and the first evidence schema. Encryption was an architectural decision, not a later add-on.</p></div>
+
+    <div class="phase"><div class="when">Sep–Dec 2025 · Maturation &amp; a hard look</div>
+      <h3>Repositories, analytics, and an honest self-audit</h3>
+      <p>Repository implementations, analytics rollups, an FTS search schema and the first real use
+        cases — followed by an unusually candid round of self-audit docs that graded the codebase and
+        set up the biggest decision of the project. Phase 8 tackled battery and performance head-on.</p></div>
+
+    <div class="phase"><div class="when">Mar 2026 · The V2 rewrite</div>
+      <h3>From “visit-first” to a “stream-first” pipeline</h3>
+      <p>The original timeline detected stops, then guessed the movement between them. V2 inverted the
+        model to a single, serial, explainable pipeline over the raw sample stream —
+        normalise → Kalman-filter → quality-score → dedup → commit-state → segment — with a gap
+        watchdog and crash recovery. This is the spine that makes honest gaps and per-row
+        explainability possible.</p></div>
+
+    <div class="phase"><div class="when">Apr–May 2026 · Productization</div>
+      <h3>A product, and a migration wedge</h3>
+      <p>Build flavors, an entitlement layer, a mileage subsystem, Photo Day Story, trip detection,
+        a carbon-footprint engine — and a deliberate go-to-market wedge: <em>Google Timeline import</em>,
+        for people whose cloud Timeline was discontinued. “Lost your Timeline? Bring it home.”</p></div>
+
+    <div class="phase"><div class="when">May–Jun 2026 · Hardening in waves</div>
+      <h3>Verify on real travel, then raise to the flagship bar</h3>
+      <p>A single living catalogue drove Waves 0 → 10, ordered by real-world impact. Each feature card
+        carried a “how to travel-test” recipe and a “flagship bar” it had to clear: timeline
+        correctness, place/geocoding trust, a Strava-parity fitness subsystem, a heatmap and
+        Year-in-Review, an accelerometer-signature classifier, and place repeatability. The database
+        schema evolved through thirteen versions, each migration tested.</p></div>
+
+    <div class="phase"><div class="when">Jul 2026 · Publishing polish</div>
+      <h3>The final pre-launch pass</h3>
+      <p>A deep correctness audit removed the last unsafe null-assertion, fixed place naming so no
+        “Unknown place” ever reaches the timeline, reworked onboarding, and — for launch — made every
+        feature free while keeping the billing layer dormant for a possible future subscription.</p></div>
+  </div>
+
+  <h2>Engineering process, in short</h2>
+  <ul>
+    <li><strong>Conventional Commits throughout</strong> — a legible history across 200+ commits.</li>
+    <li><strong>Docs coupled to code</strong> — feature commits land with catalogue updates, so the
+      docs never drift from reality.</li>
+    <li><strong>A written flagship bar per feature</strong>, and a habit of testing on real travel —
+      not just unit tests.</li>
+    <li><strong>CI on every PR</strong> — per-flavor unit tests, lint, and both flavor assemblies,
+      plus a monthly dependency-security scan.</li>
+    <li><strong>A willingness to make a hard call</strong> — the visit-first → stream-first rewrite —
+      when the retrospective said the foundation wouldn't scale.</li>
+  </ul>
+  <p class="muted" style="margin-top:24px">Voyager is a transparent heuristic engine — it wins by being
+    explainable, private and bundled, not by being a black box.</p>
+</div></div></section>
+
+<footer><div class="wrap">
+  <div>© 2026 Anshul · Voyager by Cosmic Laboratory</div>
+  <div class="foot-links">
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+</div></footer>
+
+</body>
+</html>

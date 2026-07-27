@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Features — Voyager</title>
+<meta name="description" content="Every Voyager feature — tracking, timeline, map, nine insight lenses, mileage, trips, fitness, proof and export. All free, all on-device.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%233b82f6'/></svg>">
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><span class="dot"></span>VOYAGER</a>
+  <div class="links">
+    <a href="features.html">Features</a>
+    <a href="development.html">How it was built</a>
+    <a href="privacy.html">Privacy</a>
+    <a class="btn" href="index.html#get">Get Voyager</a>
+  </div>
+</div></nav>
+
+<header class="hero" style="padding-bottom:10px"><div class="wrap">
+  <span class="eyebrow">Every feature free</span>
+  <h1>Everything Voyager does</h1>
+  <p class="lede">Voyager ships with no paywall. Tracking, timeline, map, all nine insight lenses,
+    mileage, trips, fitness, proof and export — all free, all on your device.</p>
+</div></header>
+
+<section style="padding-top:24px"><div class="wrap">
+  <div class="grid g3">
+    <div class="card"><h3><span class="ic">📍</span>Location tracking</h3><p>A battery-aware foreground
+      service with adaptive sampling and a near-zero passive tier. Fuses GPS, activity recognition,
+      an accelerometer signature, barometer, step counter and Wi-Fi. Real start / pause / stop.</p></div>
+    <div class="card"><h3><span class="ic">🧭</span>Timeline</h3><p>Visits and movement segments
+      (drive, transit, cycle, walk), colour-coded and timezone-aware, with honest GAP rows. Tap
+      “Why?” to see the evidence, or reclassify a segment yourself.</p></div>
+    <div class="card"><h3><span class="ic">🗺️</span>Map</h3><p>A dark cartographic basemap that
+      renders your day's routes and visit markers, with two-way focus sync to the timeline. Powered
+      by MapLibre + OpenStreetMap — no Google Maps API.</p></div>
+    <div class="card"><h3><span class="ic">🏷️</span>Places &amp; geocoding</h3><p>Turns coordinates into
+      names you recognise — your own name, a category, a provider name, or “Near [neighbourhood]”.
+      Recurring places resist confidence decay; a review queue lets you confirm the rest.</p></div>
+    <div class="card"><h3><span class="ic green">📈</span>Insights — 9 lenses</h3><p>Overview, Weekly,
+      Highlights, Patterns, Rhythm/Sleep, Movement, Balance, Carbon and Anomalies — plus commute
+      analysis, next-place prediction, a heatmap and a Year-in-Review.</p></div>
+    <div class="card"><h3><span class="ic">🏃</span>Activities &amp; fitness</h3><p>A private, on-device
+      fitness tracker: record runs, walks, rides and hikes with a live map, auto-pause, per-kilometre
+      splits, elevation, personal records and race-yourself segments.</p></div>
+    <div class="card"><h3><span class="ic purple">🚗</span>Mileage &amp; vehicles</h3><p>Classify drives
+      (business / personal), get IRS/HMRC-style deductions in your currency, and export a log where
+      every row carries its GPS evidence. Vehicles add fuel-cost and CO₂ estimates.</p></div>
+    <div class="card"><h3><span class="ic gold">🧳</span>Trips</h3><p>Auto-detected multi-day journeys
+      away from home, broken correctly across data blackouts, each openable as a shareable story.</p></div>
+    <div class="card"><h3><span class="ic gold">🛡️</span>Proof / evidence hub</h3><p>Audit-ready by
+      design — every drive, trip and export carries its GPS evidence and rule version, computed
+      on-device and never leaving your phone.</p></div>
+    <div class="card"><h3><span class="ic">📷</span>Day Story</h3><p>Your own device photos for a day,
+      pinned to the places you visited — a scrollable memory, entirely local. Photos are never uploaded.</p></div>
+    <div class="card"><h3><span class="ic">🔎</span>Search &amp; export</h3><p>Full-text search across places
+      and days with date/category/mode filters. Export to Voyager JSON, GPX, GeoJSON and CSV — and
+      import from Google Timeline.</p></div>
+    <div class="card"><h3><span class="ic">🔒</span>Privacy &amp; security</h3><p>SQLCipher full-database
+      encryption, a biometric app lock, a screenshot-blocking secure mode, no accounts, no analytics,
+      no ads. Network is used only for optional geocoding and map tiles.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head"><h2>Under the hood</h2>
+    <p>A transparent heuristic engine — explainable, not a black box.</p></div>
+  <div class="prose">
+    <p>Raw samples flow through a single serial pipeline — normalise → Kalman-filter → quality-score →
+      dedup → commit-state → segment — with a gap watchdog and crash-recovery state store, so the
+      timeline stays correct and every row can explain itself. Around twenty WorkManager jobs handle
+      place discovery, geocoding, trip detection, rollups, recaps, confidence decay, retention,
+      integrity checks and search indexing.</p>
+    <p>Built with Kotlin, Jetpack Compose + Material 3, Hilt, Room (encrypted) and MapLibre — clean
+      architecture, one engineer, and a deliberate design.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>© 2026 Anshul · Voyager by Cosmic Laboratory</div>
+  <div class="foot-links">
+    <a href="index.html">Home</a>
+    <a href="development.html">How it was built</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+</div></footer>
+
+</body>
+</html>
