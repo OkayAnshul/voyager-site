@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 760" font-family="Inter,system-ui,sans-serif">
+<defs>
+<radialGradient id="bg" cx="50%" cy="0%" r="90%">
+  <stop offset="0%" stop-color="#1a1440"/><stop offset="60%" stop-color="#0f0f1a"/><stop offset="100%" stop-color="#0a0a12"/>
+</radialGradient>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+  <path d="M0 0 L10 5 L0 10 z" fill="#3b82f6"/>
+</marker></defs>
+<rect width="1120" height="760" rx="18" fill="url(#bg)"/>
+<circle cx="34" cy="40" r="6" fill="#3b82f6"/><circle cx="52" cy="52" r="5" fill="#3b82f6"/><circle cx="70" cy="64" r="4" fill="#3b82f6"/>
+<text x="92" y="52" fill="#e8e8f0" font-size="24" font-weight="800" letter-spacing="0.12em">VOYAGER</text>
+<text x="92" y="76" fill="#9a9ab5" font-size="14">On-device architecture &amp; the real-time pipeline</text>
+<text x="40" y="128" text-anchor="start" fill="#3b82f6" font-size="13" font-weight="600" letter-spacing="0.12em">CLEAN ARCHITECTURE — DEPENDENCIES POINT INWARD</text>
+<rect x="40" y="142" width="160" height="44" rx="12" fill="#171730" stroke="#2b2b46" stroke-width="1.5"/><text x="120.0" y="170.0" text-anchor="middle" fill="#e8e8f0" font-size="15" font-weight="700">platform</text>
+<text x="201" y="170" fill="#9a9ab5" font-size="16">›</text>
+<rect x="212" y="142" width="160" height="44" rx="12" fill="#171730" stroke="#2b2b46" stroke-width="1.5"/><text x="292.0" y="170.0" text-anchor="middle" fill="#e8e8f0" font-size="15" font-weight="700">capture</text>
+<text x="373" y="170" fill="#9a9ab5" font-size="16">›</text>
+<rect x="384" y="142" width="160" height="44" rx="12" fill="#14213f" stroke="#3b82f6" stroke-width="1.5"/><text x="464.0" y="170.0" text-anchor="middle" fill="#e8e8f0" font-size="15" font-weight="700">pipeline</text>
+<text x="545" y="170" fill="#9a9ab5" font-size="16">›</text>
+<rect x="556" y="142" width="160" height="44" rx="12" fill="#171730" stroke="#2b2b46" stroke-width="1.5"/><text x="636.0" y="170.0" text-anchor="middle" fill="#e8e8f0" font-size="15" font-weight="700">storage</text>
+<text x="717" y="170" fill="#9a9ab5" font-size="16">›</text>
+<rect x="728" y="142" width="160" height="44" rx="12" fill="#14213f" stroke="#3b82f6" stroke-width="1.5"/><text x="808.0" y="170.0" text-anchor="middle" fill="#e8e8f0" font-size="15" font-weight="700">domain</text>
+<text x="889" y="170" fill="#9a9ab5" font-size="16">›</text>
+<rect x="900" y="142" width="160" height="44" rx="12" fill="#171730" stroke="#2b2b46" stroke-width="1.5"/><text x="980.0" y="170.0" text-anchor="middle" fill="#e8e8f0" font-size="15" font-weight="700">presentation</text>
+<text x="40" y="236" text-anchor="start" fill="#3b82f6" font-size="13" font-weight="600" letter-spacing="0.12em">THE 8-STAGE SINGLE-WRITER PIPELINE  ·  one channel, one coroutine, lock-free by construction</text>
+<rect x="40" y="258" width="150" height="62" rx="12" fill="#171730" stroke="#2b2b46" stroke-width="1.5"/><text x="115.0" y="285.0" text-anchor="middle" fill="#e8e8f0" font-size="15" font-weight="700">Sensors</text><text x="115.0" y="305.0" text-anchor="middle" fill="#9a9ab5" font-size="12">GPS · AR · accel · baro · step</text>
+<rect x="210" y="258" width="190" height="62" rx="12" fill="#14213f" stroke="#3b82f6" stroke-width="1.5"/><text x="305.0" y="285.0" text-anchor="middle" fill="#e8e8f0" font-size="15" font-weight="700">Channel</text><text x="305.0" y="305.0" text-anchor="middle" fill="#9a9ab5" font-size="12">single-writer · SUSPEND · cap 64</text>
+<line x1="190" y1="289" x2="208" y2="289" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="356" width="108" height="66" rx="12" fill="#171730" stroke="#3b82f6" stroke-width="1.5"/><text x="94.0" y="385.0" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="700">1·2 Normalize</text><text x="94.0" y="405.0" text-anchor="middle" fill="#9a9ab5" font-size="10.5">round · clamp</text>
+<line x1="148" y1="389" x2="156" y2="389" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="156" y="356" width="108" height="66" rx="12" fill="#171730" stroke="#3b82f6" stroke-width="1.5"/><text x="210.0" y="385.0" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="700">2a Dedup</text><text x="210.0" y="405.0" text-anchor="middle" fill="#9a9ab5" font-size="10.5">on RAW coords</text>
+<line x1="264" y1="389" x2="272" y2="389" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="272" y="356" width="108" height="66" rx="12" fill="#171730" stroke="#3b82f6" stroke-width="1.5"/><text x="326.0" y="385.0" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="700">2a' Anti-spoof</text><text x="326.0" y="405.0" text-anchor="middle" fill="#9a9ab5" font-size="10.5">> Mach 1</text>
+<line x1="380" y1="389" x2="388" y2="389" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="388" y="356" width="108" height="66" rx="12" fill="#171730" stroke="#e6b450" stroke-width="1.5"/><text x="442.0" y="385.0" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="700">2b Kalman</text><text x="442.0" y="405.0" text-anchor="middle" fill="#9a9ab5" font-size="10.5">4-state CV</text>
+<line x1="496" y1="389" x2="504" y2="389" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="504" y="356" width="108" height="66" rx="12" fill="#171730" stroke="#3b82f6" stroke-width="1.5"/><text x="558.0" y="385.0" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="700">3 Quality</text><text x="558.0" y="405.0" text-anchor="middle" fill="#9a9ab5" font-size="10.5">Doze-aware</text>
+<line x1="612" y1="389" x2="620" y2="389" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="620" y="356" width="108" height="66" rx="12" fill="#171730" stroke="#3b82f6" stroke-width="1.5"/><text x="674.0" y="385.0" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="700">4 Fuse</text><text x="674.0" y="405.0" text-anchor="middle" fill="#9a9ab5" font-size="10.5">AR+speed+accel</text>
+<line x1="728" y1="389" x2="736" y2="389" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="736" y="356" width="108" height="66" rx="12" fill="#171730" stroke="#66bb6a" stroke-width="1.5"/><text x="790.0" y="385.0" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="700">6 Visit</text><text x="790.0" y="405.0" text-anchor="middle" fill="#9a9ab5" font-size="10.5">hysteresis</text>
+<line x1="844" y1="389" x2="852" y2="389" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="852" y="356" width="108" height="66" rx="12" fill="#171730" stroke="#66bb6a" stroke-width="1.5"/><text x="906.0" y="385.0" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="700">7 Segment</text><text x="906.0" y="405.0" text-anchor="middle" fill="#9a9ab5" font-size="10.5">+ live snap</text>
+<line x1="960" y1="389" x2="968" y2="389" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="968" y="356" width="108" height="66" rx="12" fill="#171730" stroke="#3b82f6" stroke-width="1.5"/><text x="1022.0" y="385.0" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="700">8 Commit</text><text x="1022.0" y="405.0" text-anchor="middle" fill="#9a9ab5" font-size="10.5">state+latency</text>
+<line x1="305" y1="320" x2="94" y2="356" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="150" y="345" fill="#9a9ab5" font-size="11">raw persisted first (evidence never lost)</text>
+<rect x="40" y="456" width="250" height="58" rx="12" fill="#171730" stroke="#ab47bc" stroke-width="1.5"/><text x="165.0" y="481.0" text-anchor="middle" fill="#e8e8f0" font-size="14" font-weight="700">Gap watchdog · 60s loop</text><text x="165.0" y="501.0" text-anchor="middle" fill="#9a9ab5" font-size="11">reason-coded GAP rows</text>
+<line x1="906.0" y1="456" x2="906.0" y2="422" stroke="#ab47bc" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="5 4"/>
+<text x="300" y="482" fill="#9a9ab5" font-size="11">honest gaps = first-class rows (DORMANT / GPS_LOSS /</text>
+<text x="300" y="498" fill="#9a9ab5" font-size="11">PROCESS_DEAD), never a faked line</text>
+<text x="600" y="470" text-anchor="start" fill="#3b82f6" font-size="13" font-weight="600" letter-spacing="0.12em">3-TIER STORAGE  ·  30 encrypted tables (SQLCipher)</text>
+<rect x="600" y="486" width="150" height="70" rx="12" fill="#171730" stroke="#66bb6a" stroke-width="1.5"/>
+<text x="675.0" y="516" text-anchor="middle" fill="#e8e8f0" font-size="15" font-weight="700">Raw</text>
+<text x="675.0" y="534" text-anchor="middle" fill="#9a9ab5" font-size="11">append-only</text>
+<text x="675.0" y="548" text-anchor="middle" fill="#9a9ab5" font-size="11">evidence</text>
+<line x1="750" y1="521" x2="762" y2="521" stroke="#66bb6a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="762" y="486" width="150" height="70" rx="12" fill="#171730" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="837.0" y="516" text-anchor="middle" fill="#e8e8f0" font-size="15" font-weight="700">Derived</text>
+<text x="837.0" y="534" text-anchor="middle" fill="#9a9ab5" font-size="11">canonical</text>
+<text x="837.0" y="548" text-anchor="middle" fill="#9a9ab5" font-size="11">timeline</text>
+<line x1="912" y1="521" x2="924" y2="521" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="924" y="486" width="150" height="70" rx="12" fill="#171730" stroke="#e6b450" stroke-width="1.5"/>
+<text x="999.0" y="516" text-anchor="middle" fill="#e8e8f0" font-size="15" font-weight="700">Semantic</text>
+<text x="999.0" y="534" text-anchor="middle" fill="#9a9ab5" font-size="11">places</text>
+<text x="999.0" y="548" text-anchor="middle" fill="#9a9ab5" font-size="11">+ visits</text>
+<rect x="600" y="578" width="486" height="54" rx="12" fill="#171730" stroke="#e6b450" stroke-width="1.5"/><text x="843.0" y="601.0" text-anchor="middle" fill="#e6b450" font-size="14" font-weight="700">Evidence sidecar tables</text><text x="843.0" y="621.0" text-anchor="middle" fill="#9a9ab5" font-size="10.5">segment / visit / place — incl. counterEvidenceJson (why other labels were rejected)</text>
+<rect x="40" y="548" width="250" height="44" rx="12" fill="#171730" stroke="#2b2b46" stroke-width="1.5"/><text x="165.0" y="566.0" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="700">Crash recovery</text><text x="165.0" y="586.0" text-anchor="middle" fill="#9a9ab5" font-size="10">pending dwell JSON → CRASH_RESTORE + GAP</text>
+<rect x="300" y="548" width="250" height="44" rx="12" fill="#171730" stroke="#2b2b46" stroke-width="1.5"/><text x="425.0" y="566.0" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="700">Encryption</text><text x="425.0" y="586.0" text-anchor="middle" fill="#9a9ab5" font-size="10">always-on · Keystore-derived · device-bound</text>
+<text x="40" y="720" fill="#9a9ab5" font-size="12">660 tests · CI-enforced pipeline↔storage boundary · 212 commits · ~57K LOC · solo · Kotlin / Compose / Room / MapLibre</text>
+<text x="40" y="740" fill="#9a9ab5" font-size="11">Heuristic + explainable, not ML — every inference carries its evidence and is correctable.</text>
+</svg>
