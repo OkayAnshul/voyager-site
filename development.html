@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How Voyager was built — Development story</title>
-<meta name="description" content="The year-long development story of Voyager: 208 commits, an architectural U-turn from visit-first to a stream-first pipeline, and a wave-by-wave hardening process.">
+<meta name="description" content="The year-long development story of Voyager: 212 commits, an architectural U-turn from visit-first to a stream-first pipeline, a verify-then-flagship wave methodology, and a habit of honest self-audit.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%233b82f6'/></svg>">
@@ -23,69 +23,98 @@
 </div></nav>
 
 <header class="hero" style="padding-bottom:10px"><div class="wrap">
-  <span class="eyebrow">208 commits · Aug 2025 → Jul 2026 · one engineer</span>
+  <span class="eyebrow">212 commits · Aug 2025 → Jul 2026 · one engineer</span>
   <h1>How Voyager was built</h1>
-  <p class="lede">A one-person Android project built in the open over roughly a year — including one
-    deliberate architectural U-turn and a disciplined, wave-by-wave hardening process.</p>
+  <p class="lede">A one-person Android project, built in the open over roughly a year — including one deliberate
+    architectural U-turn, a disciplined "verify-then-flagship" process, and a habit of grading its own work
+    honestly.</p>
 </div></header>
+
+<section style="padding-top:10px"><div class="wrap">
+  <div class="stats">
+    <div class="stat"><div class="n">212</div><div class="l">commits, Conventional-Commit style</div></div>
+    <div class="stat"><div class="n">~57K</div><div class="l">lines of production Kotlin</div></div>
+    <div class="stat"><div class="n">660</div><div class="l">tests across 100+ files</div></div>
+    <div class="stat"><div class="n">v1→v13</div><div class="l">schema iterations, then reset</div></div>
+  </div>
+</div></section>
 
 <section style="padding-top:24px"><div class="wrap"><div class="prose">
   <div class="timeline">
     <div class="phase"><div class="when">Aug 2025 · Foundation</div>
       <h3>Privacy-first from the first commit</h3>
-      <p>Clean-architecture skeleton, Hilt, a Room schema <strong>encrypted with SQLCipher from day
-        one</strong>, adaptive location sampling, a foreground service, early multi-sensor capture,
-        and the first evidence schema. Encryption was an architectural decision, not a later add-on.</p></div>
+      <p>The earliest commits laid a clean-architecture skeleton with dependency injection, the core domain
+        models, and a database <strong>encrypted from day one</strong> — encryption was an architectural
+        decision, not a later bolt-on. The capture layer arrived quickly too: a foreground service, adaptive
+        sampling, a boot receiver, and early multi-sensor capture. The bug-fix commits from this era are
+        telling — zero-duration visits, GPS spam, Doze kills — the unglamorous realities of always-on Android
+        location work, met head-on.</p></div>
 
     <div class="phase"><div class="when">Sep–Dec 2025 · Maturation &amp; a hard look</div>
-      <h3>Repositories, analytics, and an honest self-audit</h3>
-      <p>Repository implementations, analytics rollups, an FTS search schema and the first real use
-        cases — followed by an unusually candid round of self-audit docs that graded the codebase and
-        set up the biggest decision of the project. Phase 8 tackled battery and performance head-on.</p></div>
+      <h3>Repositories, analytics — and an honest retrospective</h3>
+      <p>Repository implementations, analytics rollups, a search schema, and the first real use-cases landed.
+        Then something unusual for a solo project: a wave of <strong>self-audit</strong> documentation that
+        graded the codebase candidly — including its weakest axis, testing — and a dedicated phase attacking
+        battery and performance. Naming the problems out loud set up the biggest decision of the project.</p></div>
 
-    <div class="phase"><div class="when">Mar 2026 · The V2 rewrite</div>
-      <h3>From “visit-first” to a “stream-first” pipeline</h3>
-      <p>The original timeline detected stops, then guessed the movement between them. V2 inverted the
-        model to a single, serial, explainable pipeline over the raw sample stream —
-        normalise → Kalman-filter → quality-score → dedup → commit-state → segment — with a gap
-        watchdog and crash recovery. This is the spine that makes honest gaps and per-row
-        explainability possible.</p></div>
+    <div class="phase"><div class="when">Mar 2026 · The rewrite</div>
+      <h3>From "visit-first" to a "stream-first" pipeline</h3>
+      <p>The first engine was <strong>visit-first</strong>: detect stops, then guess the movement between them.
+        That made the live UI laggy and made gaps and transport-mode changes hard to reason about. The
+        retrospective concluded the foundation wouldn't scale for the thing that mattered most —
+        <em>explainability</em>. So the engine was rebuilt <strong>stream-first</strong>: a single, serial,
+        explainable pipeline over the raw sample stream, with a gap watchdog and crash recovery. This is the
+        architectural spine that makes "honest gaps" and per-row evidence possible.</p></div>
 
     <div class="phase"><div class="when">Apr–May 2026 · Productization</div>
       <h3>A product, and a migration wedge</h3>
-      <p>Build flavors, an entitlement layer, a mileage subsystem, Photo Day Story, trip detection,
-        a carbon-footprint engine — and a deliberate go-to-market wedge: <em>Google Timeline import</em>,
-        for people whose cloud Timeline was discontinued. “Lost your Timeline? Bring it home.”</p></div>
+      <p>Build flavors, a mileage subsystem, photo day-stories, trip detection, a carbon engine — and a
+        deliberate go-to-market wedge: a <strong>Google Timeline importer</strong>, for the people whose cloud
+        Timeline was discontinued with no way out. <em>"Lost your Timeline? Bring it home."</em></p></div>
 
     <div class="phase"><div class="when">May–Jun 2026 · Hardening in waves</div>
       <h3>Verify on real travel, then raise to the flagship bar</h3>
-      <p>A single living catalogue drove Waves 0 → 10, ordered by real-world impact. Each feature card
-        carried a “how to travel-test” recipe and a “flagship bar” it had to clear: timeline
-        correctness, place/geocoding trust, a Strava-parity fitness subsystem, a heatmap and
-        Year-in-Review, an accelerometer-signature classifier, and place repeatability. The database
-        schema evolved through thirteen versions, each migration tested.</p></div>
+      <p>The most distinctive part of the process. A single living catalogue drove the work in
+        <strong>waves ordered by real-world impact</strong> — "does tracking even run?" before "polish." Every
+        feature carried <strong>two gates</strong>: <em>verified</em> (behaves correctly on a real travel-test)
+        and <em>improved</em> (raised to a written flagship bar). "A feature isn't done until both boxes are
+        ticked." Each card specified exactly how to travel-test it and the bar it had to clear — and this is
+        where the timeline-correctness work, the fitness subsystem, and the trust fixes were driven to done.</p></div>
 
     <div class="phase"><div class="when">Jul 2026 · Publishing polish</div>
       <h3>The final pre-launch pass</h3>
-      <p>A deep correctness audit removed the last unsafe null-assertion, fixed place naming so no
-        “Unknown place” ever reaches the timeline, reworked onboarding, and — for launch — made every
-        feature free while keeping the billing layer dormant for a possible future subscription.</p></div>
+      <p>A deep correctness audit — establishing a green baseline, then tracing the core logic for nullability,
+        rounding, timezone math, and swallowed exceptions. It removed the last unsafe null-assertion, fixed place
+        naming so no "Unknown place" reaches the timeline, and — because the app is pre-production — collapsed the
+        throwaway migration chain to a clean baseline. Then, for launch, every feature was made free while the
+        billing layer stayed dormant for a possible future.</p></div>
   </div>
 
-  <h2>Engineering process, in short</h2>
+  <h2>The method, in one loop</h2>
+  <p>The engine didn't get good by accident. Work was ordered by <strong>real travel-test impact</strong>, not by
+    code domain. Each feature had to first be <em>verified</em> on an actual real-world test, then <em>improved</em>
+    to a written "flagship bar" — and wasn't considered done until both were true. That single discipline is why
+    the correctness work is deep rather than cosmetic.</p>
+
+  <h2>Process signals</h2>
   <ul>
-    <li><strong>Conventional Commits throughout</strong> — a legible history across 200+ commits.</li>
-    <li><strong>Docs coupled to code</strong> — feature commits land with catalogue updates, so the
-      docs never drift from reality.</li>
-    <li><strong>A written flagship bar per feature</strong>, and a habit of testing on real travel —
-      not just unit tests.</li>
-    <li><strong>CI on every PR</strong> — per-flavor unit tests, lint, and both flavor assemblies,
-      plus a monthly dependency-security scan.</li>
-    <li><strong>A willingness to make a hard call</strong> — the visit-first → stream-first rewrite —
-      when the retrospective said the foundation wouldn't scale.</li>
+    <li><strong>Conventional Commits throughout</strong> — a legible history across 200+ commits, with a dedicated
+      scope for the feature catalogue.</li>
+    <li><strong>Docs coupled to code</strong> — feature commits land <em>with</em> their catalogue update, so the
+      documentation never drifts from what actually shipped.</li>
+    <li><strong>A written bar per feature</strong>, and a habit of testing on real travel — not just unit tests.</li>
+    <li><strong>CI on every change</strong> — per-flavor tests, both-flavor assembly, lint, and a monthly
+      dependency-security scan. A test even fails the build if the architecture's layers leak into each other.</li>
+    <li><strong>The willingness to make a hard call</strong> — the visit-first → stream-first rewrite — when the
+      retrospective said the foundation wouldn't scale.</li>
   </ul>
-  <p class="muted" style="margin-top:24px">Voyager is a transparent heuristic engine — it wins by being
-    explainable, private and bundled, not by being a black box.</p>
+
+  <p class="muted" style="margin-top:24px">A note on honesty: Voyager is a transparent <strong>heuristic</strong>
+    engine, not an ML one, and it's <strong>pre-production</strong> — no real users yet, so any performance figures
+    are rigorous estimates, not field data. It was built with AI pair-programming; the architecture, the
+    decisions, and the product direction are the developer's own.</p>
+
+  <p style="margin-top:24px"><a class="btn" href="engineering.html">See the engineering deep-dive →</a></p>
 </div></div></section>
 
 <footer><div class="wrap">
@@ -93,6 +122,7 @@
   <div class="foot-links">
     <a href="index.html">Home</a>
     <a href="features.html">Features</a>
+    <a href="engineering.html">Engineering</a>
     <a href="privacy.html">Privacy Policy</a>
   </div>
 </div></footer>
